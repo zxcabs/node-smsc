@@ -1,0 +1,1 @@
+Module implements smsc.ru api for sending sms message.
