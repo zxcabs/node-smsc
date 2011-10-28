@@ -1,0 +1,1 @@
+module.exports.Msg = require('./lib/msg');
