@@ -3,7 +3,7 @@ Module implements smsc.ru api for sending sms message.
 
 first:
 ------
-    var Sms = require('../').Smsc,
+    var Sms = require('node-smsc').Smsc,
         sms = new Sms('login', 'password');
 
 example 1:
