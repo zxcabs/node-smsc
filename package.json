@@ -11,6 +11,7 @@
 	},
 	"devDependencies": {
 		"mocha": "*",
-		"node-http-proxy-cache": "0.0.1"
+		"should": "*",
+		"node-http-proxy-cache": "0.0.2"
 	}
 }
