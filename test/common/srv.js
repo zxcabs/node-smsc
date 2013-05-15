@@ -6,7 +6,7 @@
  * Init proxy server
  */
 
-var CACHE_DIR = 'rescache',
+var CACHE_DIR = __dirname + '/rescache',
 	LOCAL_PORT = '8765',
 	HOST = 'smsc.ru';
 
@@ -18,4 +18,4 @@ var proxy = module.exports = new ProxyServer({
 	cachedir: CACHE_DIR
 });
 
-
+proxy.plugin('onRequestComplete', ProxyServer.plugins.replaceParamsInHash({ login: '*', psw: '*' }));

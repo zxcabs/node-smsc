@@ -7,26 +7,40 @@
 
 var srv = require('./common/srv.js'),
 	should = require('should'),
-	api = require('../lib/api.js'),
+	api = require('../lib/index.js'),
 	LOGIN = require('./common/auth.js').LOGIN,
 	PASSWORD = require('./common/auth.js').PASSWORD;
+
+//API options
+var APIOPT = {
+		hostname: 'localhost',
+		port: srv.localport
+};
 
 /**
  * Test for API
  */
 describe('API', function () {
 
+	before(function (done) {
+		srv.listen(done);
+	});
+
+	after(function (done) {
+		srv.close(done);
+	});
+
 	/**
-	 * Test for balnce
+	 * Test for balance
 	 */
-	describe('balnce', function () {
+	describe('balance', function () {
 
 		it('should return balance', function (done) {
-			api(LOGIN, PASSWORD)
+			api(LOGIN, PASSWORD, APIOPT)
 				.balance()
-				.exec(function (err, result) {
+				.exec(function (err, balance) {
 					should.not.exist(err);
-					should.exist(result);
+					result.should.eql(15);
 					done();
 				});
 		});
