@@ -40,7 +40,7 @@ describe('API', function () {
 				.balance()
 				.exec(function (err, balance) {
 					should.not.exist(err);
-					result.should.eql(15);
+					balance.should.eql(15);
 					done();
 				});
 		});
