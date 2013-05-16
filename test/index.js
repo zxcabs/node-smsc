@@ -70,4 +70,15 @@ describe('API', function () {
 				});
 		});
 	});
+
+	/**
+	 * Test for send
+	 */
+	describe('#send', function () {
+
+		it('should send message to one phone', function (done) {
+			//TODO
+			done();
+		});
+	});
 });
