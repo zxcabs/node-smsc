@@ -10,7 +10,7 @@ exports.PASSWORD = '<password>';
 ```
 ## Example
 ```javascript
-	var api = require('node-smsc');
+var api = require('node-smsc');
 ```
 
 ## balance

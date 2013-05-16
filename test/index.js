@@ -8,8 +8,19 @@
 var srv = require('./common/srv.js'),
 	should = require('should'),
 	api = require('../lib/index.js'),
-	LOGIN = require('./common/auth.js').LOGIN,
-	PASSWORD = require('./common/auth.js').PASSWORD;
+	LOGIN, PASSWORD;
+
+/**
+ * You need create ./common/auth.js and export LOGIN and PASSWORD
+ * Proxy server will be replace auth data in times calculate hash sum
+ */
+try {
+	var auth = require('./common/auth.js');
+	LOGIN = auth.LOGIN;
+	PASSWORD = auth.PASSWORD;
+} catch (e) {
+	console.warn('You need create ./common/auth.js and export LOGIN and PASSWORD');
+}
 
 //API options
 var APIOPT = {
