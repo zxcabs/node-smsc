@@ -1,17 +1,23 @@
 {
 	"name": "node-smsc",
 	"version": "0.0.3",
-	"engines" : ["node>=0.4"],
 	"description": "Module implements smsc.ru api for sending sms message.",
 	"author": "Evgeny Reznichenko <kusakyky@gmaill.com>",
 	"repository": "https://github.com/zxcabs/node-smsc",
 	"dependencies": {
-		"superagent": "*",
+		"superagent": "0.14.1",
 		"node-lib": "0.0.2"
 	},
 	"devDependencies": {
 		"mocha": "*",
 		"should": "*",
 		"node-http-proxy-cache": "0.0.6"
+	},
+	"main": "./lib/index.js",
+	"scripts": {
+		"test": "NODE_ENV=test ./node_modules/.bin/mocha -r should -R spec"
+	},
+	"engines": {
+		"node": ">=0.8"
 	}
 }

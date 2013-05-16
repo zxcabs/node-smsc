@@ -33,7 +33,7 @@ describe('API', function () {
 	/**
 	 * Test for balance
 	 */
-	describe('balance', function () {
+	describe('#balance', function () {
 
 		it('should return balance', function (done) {
 			api(LOGIN, PASSWORD, APIOPT)
