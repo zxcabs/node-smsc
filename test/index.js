@@ -7,6 +7,7 @@
 
 var srv = require('./common/srv.js'),
 	should = require('should'),
+	crypto = require('crypto'),
 	api = require('../lib/index.js'),
 	LOGIN, PASSWORD;
 
@@ -40,6 +41,19 @@ describe('API', function () {
 	after(function (done) {
 		srv.close(done);
 	});
+
+	/**
+	 * Test for api constructor
+	 */
+	describe('constructor', function () {
+		it('should password eql md5(password).toLowerCase()', function () {
+			var hash = crypto.createHash('md5').update(PASSWORD).digest('hex').toLowerCase();
+
+			api(LOGIN, PASSWORD)
+				.password.should.eql(hash);
+		});
+	});
+
 
 	/**
 	 * Test for balance
