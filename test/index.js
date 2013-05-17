@@ -236,6 +236,19 @@ describe('API', function () {
 						done();
 					});
 			});
+
+			it('should return error if group number already exist', function (done) {
+				var groupNum = 1234;
+
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.add('new group 2', groupNum)
+					.exec(function (err, groupId) {
+						err.should.have.property('error', 'save error');
+						err.should.have.property('error_code', 5);
+						done();
+					});
+			});
 		});
 
 		/**
