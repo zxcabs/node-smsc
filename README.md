@@ -64,3 +64,30 @@ api(LOGIN, PASSWORD)
 		// list => ['<name>', '<name>', ...]
 	});
 ````
+
+## Group
+[doc]()
+
+### Add new group
+````javascript
+var name = 'new group',
+	number = 1234;
+
+api(LOGIN, PASSWORD)
+	.group(http://smsc.ru/api/http/#group)
+	.add(name, number)
+	.exec(function (err, groupId) {
+		//
+	});
+````
+or
+````javascript
+var name = 'new group';
+
+api(LOGIN, PASSWORD)
+	.group()
+	.add(name)
+	.exec(function (err, groupId) {
+		//
+	});
+````

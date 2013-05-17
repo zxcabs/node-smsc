@@ -203,4 +203,39 @@ describe('API', function () {
 			});
 		});
 	});
+
+	/**
+	 * Test for group
+	 */
+	describe('#group', function () {
+
+		/**
+		 * Test for add
+		 */
+		describe('#add', function () {
+			it('should create new group with groupNumber', function (done) {
+				var groupNum = 1234;
+
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.add('new group', groupNum)
+					.exec(function (err, groupId) {
+						should.not.exist(err);
+						should.exist(groupId);
+						done();
+					});
+			});
+
+			it('should create new group without groupNumber', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.add('new group')
+					.exec(function (err, groupId) {
+						should.not.exist(err);
+						should.exist(groupId);
+						done();
+					});
+			});
+		});
+	});
 });
