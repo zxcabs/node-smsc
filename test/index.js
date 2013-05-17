@@ -237,5 +237,71 @@ describe('API', function () {
 					});
 			});
 		});
+
+		/**
+		 * Test for rename
+		 */
+		describe('#rename', function () {
+			it('should rename group', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.add('my group')
+					.exec(function (err, groupId) {
+						should.not.exist(err);
+
+						api(LOGIN, PASSWORD, APIOPT)
+							.group()
+							.rename(groupId, 'my group new name')
+							.exec(function (err) {
+								should.not.exist(err);
+								done();
+							});
+					});
+			});
+
+			it('should return error if group not exist', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.rename(12345, 'my group new name')
+					.exec(function (err) {
+						err.should.have.property('error', 'record not found');
+						err.should.have.property('error_code', 3);
+						done();
+					});
+			});
+
+			it('should return error if new name not set', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.rename(5924)
+					.exec(function (err) {
+						err.should.have.property('error', 'parameters error');
+						err.should.have.property('error_code', 1);
+						done();
+					});
+			});
+
+			it('should return error if new name is empty string', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.rename(5924, '')
+					.exec(function (err) {
+						err.should.have.property('error', 'parameters error');
+						err.should.have.property('error_code', 1);
+						done();
+					});
+			});
+
+			it('should return error if new name is space string', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.rename(5924, ' ')
+					.exec(function (err) {
+						err.should.have.property('error', 'save error');
+						err.should.have.property('error_code', 5);
+						done();
+					});
+			});
+		});
 	});
 });

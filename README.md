@@ -66,7 +66,7 @@ api(LOGIN, PASSWORD)
 ````
 
 ## Group
-[doc]()
+[doc](http://smsc.ru/api/http/#group)
 
 ### Add new group
 ````javascript
@@ -74,7 +74,7 @@ var name = 'new group',
 	number = 1234;
 
 api(LOGIN, PASSWORD)
-	.group(http://smsc.ru/api/http/#group)
+	.group()
 	.add(name, number)
 	.exec(function (err, groupId) {
 		//
@@ -88,6 +88,16 @@ api(LOGIN, PASSWORD)
 	.group()
 	.add(name)
 	.exec(function (err, groupId) {
+		//
+	});
+````
+
+### Rename group
+````javascript
+api(LOGIN, PASSWORD)
+	.group()
+	.rename(groupId, 'my group new name')
+	.exec(function (err) {
 		//
 	});
 ````
