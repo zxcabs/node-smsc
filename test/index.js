@@ -9,7 +9,8 @@ var srv = require('./common/srv.js'),
 	should = require('should'),
 	crypto = require('crypto'),
 	api = require('../lib/index.js'),
-	LOGIN, PASSWORD;
+	LOGIN = '',
+	PASSWORD = '';
 
 /**
  * You need create ./common/auth.js and export LOGIN and PASSWORD
