@@ -37,7 +37,6 @@ api(LOGIN, PASSWORD)
 ````
 
 ### Delete sender
-
 ````javascript
 api(LOGIN, PASSWORD)
 	.sender()
@@ -53,5 +52,15 @@ api(LOGIN, PASSWORD)
 	.del(senderId)
 	.exec(function (err) {
 		//
+	});
+````
+
+### Get sender name list
+````javascript
+api(LOGIN, PASSWORD)
+	.sender()
+	.get()
+	.exec(function (err, list) {
+		// list => ['<name>', '<name>', ...]
 	});
 ````

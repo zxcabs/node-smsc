@@ -141,6 +141,7 @@ describe('API', function () {
 			});
 		});
 
+
 		/**
 		 * Test for del
 		 */
@@ -180,6 +181,23 @@ describe('API', function () {
 						should.exist(err);
 						err.should.have.property('error', 'record not found');
 						err.should.have.property('error_code', 3);
+						done();
+					});
+			});
+		});
+
+		/**
+		 * Test for list
+		 */
+		describe('#list', function () {
+			it('should return senders list', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.get()
+					.exec(function (err, list) {
+						should.not.exist(err);
+						should.exist(list);
+						list[0].sender.should.eql('zxcabs');
 						done();
 					});
 			});
