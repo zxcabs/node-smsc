@@ -391,4 +391,35 @@ describe('API', function () {
 			});
 		});
 	});
+
+	/**
+	 * Test for contact
+	 */
+	describe('#contact', function () {
+		/**
+		 * Test for add
+		 */
+		describe('#add', function () {
+			it('should create new contact', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.contact()
+					.add('Mr.Anderson')
+					.phone('+79112223344')
+					.group(5924)
+					.first('Thomas')
+					.middle('A.')
+					.last('Anderson')
+					.birthday(new Date(1962, 2, 11))
+					.myid(1234)
+					.comment('Neo')
+					.tags('neo')
+					.other('+79112223355')
+					.exec(function (err, id) {
+						should.not.exist(err);
+						should.exist(id);
+						done();
+					});
+			});
+		});
+	});
 });
