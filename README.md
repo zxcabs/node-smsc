@@ -23,3 +23,15 @@ api(LOGIN, PASSWORD)
 	});
 ```
 
+## Sender
+[doc](http://smsc.ru/api/http/#senders)
+
+### Add new sender
+````javascript
+api(LOGIN, PASSWORD)
+	.sender()
+	.add('<new sender name>', '<sender comment>')
+	.exec(function (err, senderId) {
+		//
+	});
+````

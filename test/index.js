@@ -82,4 +82,78 @@ describe('API', function () {
 			done();
 		});
 	});
+
+	/**
+	 * Test for senders
+	 */
+	describe('#senders', function () {
+		var name = 'my_test_1';
+
+		/**
+		 * Test for add
+		 */
+		describe('#add', function () {
+			it('should add new sender ' + name, function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.add(name, 'New sender')
+					.exec(function (err, senderId) {
+						should.not.exist(err);
+						senderId.should.eql(24336);
+						done();
+					});
+			});
+
+			it('should return error if comment not set', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.add('test_2')
+					.exec(function (err) {
+						should.exist(err);
+						err.should.have.property('error', 'parameters error');
+						err.should.have.property('error_code', 1);
+						done();
+					});
+			});
+
+			it('should return error if sender comment a null string', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.add('test_3', '')
+					.exec(function (err, senderId) {
+						should.exist(err);
+						err.should.have.property('error', 'parameters error');
+						err.should.have.property('error_code', 1);
+						done();
+					});
+			});
+
+			it('should return error if sender name already exist', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.add(name, 'New sender 2')
+					.exec(function (err, senderId) {
+						should.exist(err);
+						err.should.have.property('error', 'save error');
+						err.should.have.property('error_code', 5);
+						done();
+					});
+			});
+		});
+
+		/**
+		 * Test for del
+		 */
+		describe('#del', function () {
+			it('should delete sender ' + name, function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.del(name)
+					.exec(function (err) {
+						should.not.exist(err);
+						done();
+					});
+			});
+		});
+	});
 });
