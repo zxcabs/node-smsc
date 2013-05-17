@@ -371,5 +371,24 @@ describe('API', function () {
 						});
 			});
 		});
+
+		/**
+		 * Test for get
+		 * get group list
+		 */
+		describe('#get', function () {
+			it('should return group list', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.get()
+					.exec(function (err, list) {
+						should.not.exist(err);
+						should.exist(list);
+						list[0].should.have.property('id', 5924);
+						list[0].should.have.property('name', 'My group new name');
+						done();
+					});
+			});
+		});
 	});
 });

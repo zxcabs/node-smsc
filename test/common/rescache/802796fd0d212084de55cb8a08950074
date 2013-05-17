@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 17 May 2013 12:52:13 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Content-Length: 135
+
+[{
+"id": 5924,
+"name": "My group new name"
+},
+{
+"id": 5922,
+"name": "New group"
+},
+{
+"id": 5921,
+"name": "New group",
+"number": 1234
+}]

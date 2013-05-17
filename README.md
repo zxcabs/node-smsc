@@ -111,3 +111,14 @@ api(LOGIN, PASSWORD)
 		//
 	});
 ````
+
+### Get group list
+````javascript
+api(LOGIN, PASSWORD)
+	.group()
+	.get()
+	.exec(function (err, list) {
+		// list => [{ 'id': <id>, 'name': '<name>' }, ...]
+		done();
+	});
+````
