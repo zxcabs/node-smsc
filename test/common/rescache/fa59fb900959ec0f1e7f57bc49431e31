@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 17 May 2013 10:01:14 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Content-Length: 19
+
+{
+"sender": 24338
+}

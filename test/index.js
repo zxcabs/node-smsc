@@ -145,12 +145,41 @@ describe('API', function () {
 		 * Test for del
 		 */
 		describe('#del', function () {
-			it('should delete sender ' + name, function (done) {
+			it('should delete sender by name', function (done) {
 				api(LOGIN, PASSWORD, APIOPT)
 					.sender()
 					.del(name)
 					.exec(function (err) {
 						should.not.exist(err);
+						done();
+					});
+			});
+
+			it('should delete sender by id', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.add('test3', 'New sender')
+					.exec(function (err, senderId) {
+						should.not.exist(err);
+
+						api(LOGIN, PASSWORD, APIOPT)
+							.sender()
+							.del(senderId)
+							.exec(function (err) {
+								should.not.exist(err);
+								done();
+							});
+					});
+			});
+
+			it('should return error when sender not exist', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.sender()
+					.del('not exist')
+					.exec(function (err) {
+						should.exist(err);
+						err.should.have.property('error', 'record not found');
+						err.should.have.property('error_code', 3);
 						done();
 					});
 			});

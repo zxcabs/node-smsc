@@ -35,3 +35,23 @@ api(LOGIN, PASSWORD)
 		//
 	});
 ````
+
+### Delete sender
+
+````javascript
+api(LOGIN, PASSWORD)
+	.sender()
+	.del(name)
+	.exec(function (err) {
+		//
+	});
+````
+or
+````javascript
+api(LOGIN, PASSWORD)
+	.sender()
+	.del(senderId)
+	.exec(function (err) {
+		//
+	});
+````
