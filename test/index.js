@@ -316,5 +316,60 @@ describe('API', function () {
 					});
 			});
 		});
+
+		/**
+		 * Test for del
+		 */
+		describe('#del', function () {
+			it('should delete group', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.group()
+					.add('new group 3')
+					.exec(function (err, groupId) {
+						should.not.exist(err);
+
+						api(LOGIN, PASSWORD, APIOPT)
+							.group()
+							.del(groupId)
+							.exec(function (err) {
+								should.not.exist(err);
+								done();
+							});
+					});
+			});
+
+			it('should return error "record not found" if group not exist', function (done) {
+					api(LOGIN, PASSWORD, APIOPT)
+						.group()
+						.del(4321)
+						.exec(function (err) {
+							err.should.have.property('error', 'record not found');
+							err.should.have.property('error_code', 3);
+							done();
+						});
+			});
+
+			it('should return error "parameters error" if groupId not set', function (done) {
+					api(LOGIN, PASSWORD, APIOPT)
+						.group()
+						.del()
+						.exec(function (err) {
+							err.should.have.property('error', 'parameters error');
+							err.should.have.property('error_code', 1);
+							done();
+						});
+			});
+
+			it('should return error "parameters error" if wrong groupId', function (done) {
+					api(LOGIN, PASSWORD, APIOPT)
+						.group()
+						.del('WRONG123')
+						.exec(function (err) {
+							err.should.have.property('error', 'parameters error');
+							err.should.have.property('error_code', 1);
+							done();
+						});
+			});
+		});
 	});
 });

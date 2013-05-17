@@ -101,3 +101,13 @@ api(LOGIN, PASSWORD)
 		//
 	});
 ````
+
+### Delete group
+````javascript
+api(LOGIN, PASSWORD)
+	.group()
+	.del(groupId)
+	.exec(function (err) {
+		//
+	});
+````
