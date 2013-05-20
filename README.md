@@ -154,3 +154,25 @@ api(LOGIN, PASSWORD)
 		//
 	});
 ````
+
+### Update
+````javascript
+api(LOGIN, PASSWORD)
+	.contact()
+	.update()
+	.oldphone(['79112223341', '79112223342'])
+	.phone('+79221113340')
+	.name('Anderson')
+	.group(5922)
+	.first('T')
+	.middle('A')
+	.last('A')
+	.birthday(new Date(1960, 0, 1))
+	.myid(4321)
+	.comment('fake')
+	.tags('ups')
+	.limit()
+	.exec(function (err) {
+		//
+	});
+````
