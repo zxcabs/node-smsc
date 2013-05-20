@@ -203,3 +203,14 @@ api(LOGIN, PASSWORD, APIOPT)
          */
 	});
 ````
+
+### Del
+````javascript
+api(LOGIN, PASSWORD)
+	.contact()
+	.del()
+	.phone('79221113340')
+	.exec(function (err) {
+		//
+	});
+````

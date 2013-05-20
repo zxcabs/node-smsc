@@ -486,5 +486,21 @@ describe('API', function () {
 					});
 			});
 		});
+
+		/**
+		 * Test for delete
+		 */
+		describe('#del', function () {
+			it('should delete contact', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.contact()
+					.del()
+					.phone('79221113340')
+					.exec(function (err) {
+						should.not.exist(err);
+						done();
+					});
+			});
+		});
 	});
 });
