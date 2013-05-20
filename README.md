@@ -176,3 +176,30 @@ api(LOGIN, PASSWORD)
 		//
 	});
 ````
+
+### Get
+````javascript
+api(LOGIN, PASSWORD, APIOPT)
+	.contact()
+	.get()
+	.exec(function (err, list) {
+		/**
+		 * list => [
+		 *	{
+         *   "phone": "79221113340",
+         *   "name": "Anderson",
+         *   "group": "5922",
+         *   "first_name": "T",
+         *   "last_name": "A",
+         *   "middle_name": "A",
+         *   "birthday": "01.01.1960",
+         *   "id": "4321",
+         *   "comments": "fake",
+         *   "tags": "ups",
+         *   "phone_other": "+79112223351,+79112223352"
+         *   },
+         *   ....
+         * ]
+         */
+	});
+````

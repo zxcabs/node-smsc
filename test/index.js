@@ -455,5 +455,36 @@ describe('API', function () {
 
 			});
 		});
+
+		/**
+		 * Test for get
+		 */
+		describe('#get', function () {
+			it('should return contact list', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.contact()
+					.get()
+					.exec(function (err, list) {
+						should.not.exist(err);
+						should.exist(list);
+
+						var anderson = list[0];
+
+						anderson.should.have.property('phone', '79221113340');
+						anderson.should.have.property('name', 'Anderson');
+						anderson.should.have.property('group', '5922');
+						anderson.should.have.property('first_name', 'T');
+						anderson.should.have.property('last_name', 'A');
+						anderson.should.have.property('middle_name', 'A');
+						anderson.should.have.property('birthday', '01.01.1960');
+						anderson.should.have.property('id', '4321');
+						anderson.should.have.property('comments', 'fake');
+						anderson.should.have.property('tags', 'ups');
+						anderson.should.have.property('phone_other', '+79112223351,+79112223352');
+
+						done();
+					});
+			});
+		});
 	});
 });
