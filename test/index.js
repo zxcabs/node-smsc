@@ -503,4 +503,30 @@ describe('API', function () {
 			});
 		});
 	});
+
+	/**
+	 * Test for sms send
+	 */
+	describe('#send', function () {
+
+		/**
+		 * Test for msg
+		 */
+		describe('#msg', function () {
+
+			it('should send message', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.send()
+					.msg('Hello!')
+					.phones('79627086872')
+					.cost(1)
+					.exec(function (err, res) {
+						should.not.exist(err);
+						should.exist(res);
+						done();
+					});
+			});
+
+		});
+	});
 });
