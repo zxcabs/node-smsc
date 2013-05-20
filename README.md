@@ -122,3 +122,35 @@ api(LOGIN, PASSWORD)
 		done();
 	});
 ````
+
+## Contact
+[doc](http://smsc.ru/api/http/#contact)
+
+### Add
+````javascript
+api(LOGIN, PASSWORD)
+	.contact()
+	.add('Mr.Anderson')
+	.phone('+79112223341')
+	.phone('+79112223342')
+	.group(5924)
+	.group(5922)
+	.first('Thomas')
+	.middle('A.')
+	.last('Anderson')
+	.birthday(new Date(1962, 2, 11))
+	.myid(1234)
+	.comment('Neo')
+	.tags('neo')
+	.tags('matrix')
+	//Other phone numbers. According to the distribution
+	//of the numbers of SMS-messages is performed.
+	.other('+79112223351')
+	.other('+79112223352')
+	//You can specify a limit posts to contact and it will decrease after each send a message to that contact.
+    //Upon reaching zero contact stops to get out of the phone book. Leave field blank if you do not need limits.
+	.limit(10)
+	.exec(function (err, id) {
+		//
+	});
+````

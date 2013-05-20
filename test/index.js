@@ -404,8 +404,10 @@ describe('API', function () {
 				api(LOGIN, PASSWORD, APIOPT)
 					.contact()
 					.add('Mr.Anderson')
-					.phone('+79112223344')
+					.phone('+79112223341')
+					.phone('+79112223342')
 					.group(5924)
+					.group(5922)
 					.first('Thomas')
 					.middle('A.')
 					.last('Anderson')
@@ -413,7 +415,10 @@ describe('API', function () {
 					.myid(1234)
 					.comment('Neo')
 					.tags('neo')
-					.other('+79112223355')
+					.tags('matrix')
+					.other('+79112223351')
+					.other('+79112223352')
+					.limit(10)
 					.exec(function (err, id) {
 						should.not.exist(err);
 						should.exist(id);
