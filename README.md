@@ -3,11 +3,13 @@
 
 ## For developers
 
-You need create `test/common/auth.js` file and put:
+You need create `test/common/private.js` file and put:
 ```javascript
 exports.LOGIN = '<login>';
 exports.PASSWORD = '<password>';
+exports.REALPHONE = '<real phone>';
 ```
+
 ## Example
 ```javascript
 var api = require('node-smsc');

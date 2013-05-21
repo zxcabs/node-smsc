@@ -10,18 +10,20 @@ var srv = require('./common/srv.js'),
 	crypto = require('crypto'),
 	api = require('../lib/index.js'),
 	LOGIN = '',
-	PASSWORD = '';
+	PASSWORD = '',
+	REALPHONE = '';
 
 /**
- * You need create ./common/auth.js and export LOGIN and PASSWORD
- * Proxy server will be replace auth data in times calculate hash sum
+ * You need create ./common/private.js and export LOGIN, PASSWORD and REALPHONE
+ * Proxy server will be replaced private data in times calculate hash sum
  */
 try {
-	var auth = require('./common/auth.js');
-	LOGIN = auth.LOGIN;
-	PASSWORD = auth.PASSWORD;
+	var private = require('./common/private.js');
+	LOGIN = private.LOGIN;
+	PASSWORD = private.PASSWORD;
+	REALPHONE = private.REALPHONE;
 } catch (e) {
-	console.warn('You need create ./common/auth.js and export LOGIN and PASSWORD');
+	console.warn('You need create ./common/private.js and export LOGIN, PASSWORD and REALPHONE');
 }
 
 //API options
@@ -514,15 +516,16 @@ describe('API', function () {
 		 */
 		describe('#msg', function () {
 
-			it('should send message', function (done) {
+			it('should return sms cost', function (done) {
 				api(LOGIN, PASSWORD, APIOPT)
 					.send()
 					.msg('Hello!')
-					.phones('79627086872')
+					.phones(REALPHONE)
 					.cost(1)
 					.exec(function (err, res) {
 						should.not.exist(err);
-						should.exist(res);
+						res.should.have.property('cost', '0.4');
+						res.should.have.property('cnt', 1)
 						done();
 					});
 			});
