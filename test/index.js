@@ -530,6 +530,19 @@ describe('API', function () {
 					});
 			});
 
+			it('should send sms and return count and id', function (done) {
+				api(LOGIN, PASSWORD, APIOPT)
+					.send()
+					.msg('Hello!')
+					.phones(REALPHONE)
+					.exec(function (err, res) {
+						should.not.exist(err);
+						res.should.have.property('id');
+						res.should.have.property('cnt');
+						done();
+					});
+			});
+
 		});
 	});
 });
