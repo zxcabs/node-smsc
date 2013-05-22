@@ -1,11 +1,10 @@
 HTTP/1.1 200 OK
 Server: nginx
-Date: Fri, 17 May 2013 11:54:20 GMT
+Date: Wed, 22 May 2013 12:13:33 GMT
 Content-Type: application/json; charset=utf-8
 Connection: keep-alive
-Content-Length: 48
+Content-Length: 22
 
 {
-"error": "record not found",
-"error_code": 3
+"balance": "15.00"
 }

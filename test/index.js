@@ -101,7 +101,7 @@ describe('API', function () {
 					.add(name, 'New sender')
 					.exec(function (err, senderId) {
 						should.not.exist(err);
-						senderId.should.eql(24336);
+						senderId.should.eql(24608);
 						done();
 					});
 			});
