@@ -11,7 +11,7 @@
 	"devDependencies": {
 		"mocha": "*",
 		"should": "*",
-		"node-http-proxy-cache": "0.0.6"
+		"node-http-proxy-cache": "0.0.7"
 	},
 	"main": "./lib/index.js",
 	"scripts": {
